@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAPRAA – Pakistan's Finest Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════
+   BASE
+═══════════════════════════════ */
+:root{
+  --gold:#D4A843;
+  --gold2:#F0C96B;
+  --dark:#0E0B06;
+  --dark2:#1C1608;
+  --dark3:#2A2010;
+  --cream:#FBF7EF;
+  --warm:#F4EDD8;
+  --muted:#8C7A5E;
+  --red:#9B1C1C;
+  --r:8px;
+  --tr:all .3s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+img{display:block;width:100%}
+a{text-decoration:none}
+button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;outline:none}
+
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(14,11,6,.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,168,67,.2);
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;font-weight:900;
+  color:var(--gold);letter-spacing:3px;
+}
+.logo sup{font-size:.45rem;color:var(--muted);vertical-align:super}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.65);font-size:.75rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-icons{display:flex;gap:.5rem;align-items:center}
+.ni{background:none;color:rgba(255,255,255,.7);font-size:1.1rem;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--tr);position:relative}
+.ni:hover{background:rgba(212,168,67,.15);color:var(--gold)}
+.ni .dot{position:absolute;top:4px;right:4px;background:var(--red);color:#fff;border-radius:50%;width:16px;height:16px;font-size:.58rem;font-weight:800;display:flex;align-items:center;justify-content:center;animation:pop 2s ease-in-out infinite}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero{
+  margin-top:62px;
+  min-height:calc(100svh - 62px);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 5% 30px;
+  text-align:center;
+  background:#0E0B06;
+}
+/* animated gradient bg */
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%, #2A1A08 0%, #0E0B06 70%);
+  animation:hglow 5s ease-in-out infinite alternate;
+}
+@keyframes hglow{from{opacity:.6}to{opacity:1}}
+/* grid lines */
+.hero-grid{
+  position:absolute;inset:0;z-index:1;
+  background-image:linear-gradient(rgba(212,168,67,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,67,.04) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+/* sweep */
+.hero-sweep{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(105deg,transparent 30%,rgba(212,168,67,.06) 50%,transparent 70%);
+  animation:sweep 7s ease-in-out infinite;
+}
+@keyframes sweep{0%{transform:translateX(-120%)}100%{transform:translateX(220%)}}
+
+/* floating orbs */
+.orb{
+  position:absolute;border-radius:50%;filter:blur(60px);opacity:.15;pointer-events:none;z-index:2;
+  animation:orbFloat var(--d) ease-in-out infinite alternate var(--delay);
+}
+@keyframes orbFloat{from{transform:translate(0,0) scale(1)}to{transform:translate(var(--tx),var(--ty)) scale(1.2)}}
+
+.hero-content{position:relative;z-index:10;max-width:600px}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.68rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem;
+  animation:fadeUp .8s ease both .2s;
+}
+.hero-eyebrow i{display:inline-block;width:30px;height:1px;background:var(--gold);opacity:.5}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,8vw,4.8rem);
+  font-weight:900;color:#fff;
+  line-height:1.08;margin-bottom:1rem;
+  animation:fadeUp .9s ease both .35s;
+}
+.hero-h1 em{color:var(--gold);font-style:italic;display:block}
+.hero-p{
+  color:rgba(255,255,255,.5);font-size:.92rem;line-height:1.75;
+  margin-bottom:2rem;max-width:460px;margin-left:auto;margin-right:auto;
+  animation:fadeUp 1s ease both .5s;
+}
+.hero-btns{
+  display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;
+  margin-bottom:2.5rem;
+  animation:fadeUp 1s ease both .65s;
+}
+.btn-g{
+  background:var(--gold);color:var(--dark);
+  padding:13px 30px;font-size:.8rem;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;border-radius:var(--r);
+  transition:var(--tr);box-shadow:0 4px 20px rgba(212,168,67,.3);
+}
+.btn-g:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(212,168,67,.45);background:var(--gold2)}
+.btn-o{
+  background:transparent;color:rgba(255,255,255,.8);
+  border:1px solid rgba(255,255,255,.25);
+  padding:13px 30px;font-size:.8rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;border-radius:var(--r);
+  transition:var(--tr);
+}
+.btn-o:hover{border-color:var(--gold);color:var(--gold)}
+
+/* category shortcut pills */
+.hero-pills{
+  display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;
+  animation:fadeUp 1s ease both .8s;
+}
+.pill{
+  display:flex;align-items:center;gap:.35rem;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(212,168,67,.2);
+  color:rgba(255,255,255,.7);
+  padding:8px 14px;border-radius:50px;
+  font-size:.72rem;font-weight:600;
+  transition:var(--tr);cursor:pointer;
+}
+.pill:hover,.pill:active{background:rgba(212,168,67,.15);border-color:var(--gold);color:var(--gold)}
+.pill span{font-size:1rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════
+   TICKER
+═══════════════════════════════ */
+.ticker{background:var(--gold);padding:10px 0;overflow:hidden;white-space:nowrap}
+.ticker-t{
+  display:inline-block;
+  animation:ticker 22s linear infinite;
+  font-size:.7rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--dark);
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════
+   FEATURES STRIP
+═══════════════════════════════ */
+.features{
+  background:var(--dark2);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid rgba(212,168,67,.1);
+}
+.feat{
+  display:flex;align-items:center;gap:.8rem;
+  padding:1.2rem 1.5rem;
+  border-right:1px solid rgba(212,168,67,.08);
+  transition:var(--tr);
+}
+.feat:last-child{border-right:none}
+.feat:hover{background:rgba(212,168,67,.05)}
+.feat-ico{font-size:1.6rem;flex-shrink:0}
+.feat-t{font-size:.75rem;font-weight:700;color:var(--cream);text-transform:uppercase;letter-spacing:.8px;margin-bottom:2px}
+.feat-d{font-size:.68rem;color:var(--muted)}
+
+/* ═══════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════ */
+.section{padding:70px 5%}
+.section.dark{background:var(--dark2)}
+.section.warm{background:var(--warm)}
+
+.sh{margin-bottom:2.5rem}
+.sh-tag{display:block;font-size:.65rem;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.sh-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;line-height:1.1}
+.sh-title em{font-style:italic;color:var(--gold)}
+.sh-line{width:44px;height:2.5px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:.8rem}
+.sh-row{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.see-all{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .3s}
+.see-all:hover{border-color:var(--gold)}
+
+/* scroll reveal */
+.rev{opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease}
+.rev.on{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════
+   CATEGORIES
+═══════════════════════════════ */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+.cat{
+  position:relative;border-radius:14px;overflow:hidden;
+  cursor:pointer;aspect-ratio:3/4;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+  padding:1.4rem;
+  border:1px solid rgba(255,255,255,.06);
+  transition:var(--tr);
+}
+.cat::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 50%,transparent 100%);
+  z-index:1;
+}
+.cat:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.35);border-color:var(--gold)}
+.cat-gbg{position:absolute;inset:0;z-index:0;transition:transform .5s ease}
+.cat:hover .cat-gbg{transform:scale(1.07)}
+
+.cat-emo{
+  position:absolute;top:28%;left:50%;transform:translate(-50%,-50%);
+  font-size:4.5rem;z-index:2;
+  filter:drop-shadow(0 6px 16px rgba(0,0,0,.4));
+  transition:var(--tr);
+}
+.cat:hover .cat-emo{transform:translate(-50%,-60%) scale(1.1)}
+
+.cat-body{position:relative;z-index:3;text-align:center;width:100%}
+.cat-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff}
+.cat-sub{font-size:.63rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-top:3px}
+.cat-btn{
+  display:inline-block;margin-top:.6rem;
+  background:var(--gold);color:var(--dark);
+  padding:6px 16px;border-radius:4px;
+  font-size:.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  opacity:0;transform:translateY(10px);transition:var(--tr);
+}
+.cat:hover .cat-btn{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════
+   SHOWCASE / ANIMATED BANNER
+═══════════════════════════════ */
+.showcase{
+  position:relative;overflow:hidden;
+  min-height:420px;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:60px 5%;
+  background:var(--dark);
+}
+.sc-bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(-45deg,#0a0604,#1a1008,#2e1e0a,#0e0a04,#180e04,#241808);
+  background-size:400% 400%;
+  animation:bgsh 10s ease infinite;
+}
+@keyframes bgsh{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.sc-grid{
+  position:absolute;inset:0;z-index:1;
+  background-image:linear-gradient(rgba(212,168,67,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,67,.05) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+/* Animated fabric waves */
+.sc-waves{position:absolute;inset:0;z-index:2;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:0}
+.wave{
+  width:100px;height:200%;opacity:.07;border-radius:80px;
+  animation:waveRock var(--ws) ease-in-out infinite alternate var(--wd);
+}
+@keyframes waveRock{0%{transform:rotate(var(--wa)) translateY(-8%)}100%{transform:rotate(var(--wb)) translateY(8%)}}
+
+.sc-content{position:relative;z-index:10}
+.sc-tag{display:block;font-size:.65rem;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.sc-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,3.5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.5rem}
+.sc-title em{color:var(--gold);font-style:italic}
+.sc-sub{color:rgba(255,255,255,.4);font-size:.88rem;margin-bottom:2rem}
+.play-btn{
+  width:72px;height:72px;
+  border:2px solid var(--gold);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1.4rem;
+  position:relative;transition:var(--tr);margin:0 auto;
+  cursor:pointer;
+}
+.play-btn::before{
+  content:'';position:absolute;inset:-10px;
+  border:1px solid rgba(212,168,67,.25);border-radius:50%;
+  animation:ping 2.5s ease-in-out infinite;
+}
+@keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.3}}
+.play-btn:hover{background:var(--gold);color:var(--dark)}
+/* stats row */
+.sc-stats{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.sc-stat{
+  background:rgba(255,255,255,.05);border:1px solid rgba(212,168,67,.2);
+  border-radius:10px;padding:.9rem 1.4rem;text-align:center;min-width:100px;
+  transition:var(--tr);
+}
+.sc-stat:hover{background:rgba(212,168,67,.1);border-color:var(--gold)}
+.sc-stat-n{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold);font-weight:900;display:block}
+.sc-stat-l{font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+
+/* ═══════════════════════════════
+   PRODUCTS
+═══════════════════════════════ */
+.ftabs{display:flex;gap:.5rem;margin-bottom:2rem;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.ftabs::-webkit-scrollbar{display:none}
+.ft{
+  white-space:nowrap;flex-shrink:0;
+  padding:8px 18px;border:1px solid rgba(140,122,94,.3);
+  background:transparent;color:var(--muted);
+  font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  border-radius:4px;transition:var(--tr);
+}
+.ft.on,.ft:hover{background:var(--dark);border-color:var(--dark);color:var(--gold)}
+
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+
+.pc{
+  background:#fff;border-radius:12px;overflow:hidden;
+  border:1px solid transparent;transition:var(--tr);
+}
+.pc:hover{border-color:rgba(212,168,67,.4);box-shadow:0 14px 40px rgba(14,11,6,.12);transform:translateY(-5px)}
+
+.pi{
+  position:relative;height:260px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.pi-bg{position:absolute;inset:0;transition:transform .6s ease}
+.pc:hover .pi-bg{transform:scale(1.06)}
+.pi-em{position:relative;z-index:1;font-size:5rem;filter:drop-shadow(0 6px 14px rgba(0,0,0,.15))}
+
+.pbadge{
+  position:absolute;top:10px;left:10px;z-index:5;
+  font-size:.6rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;color:#fff;
+}
+.b-sale{background:var(--red)}
+.b-new{background:var(--dark2)}
+.b-hot{background:#b45309}
+
+.pqa{
+  position:absolute;bottom:10px;right:10px;z-index:5;
+  display:flex;flex-direction:column;gap:6px;
+  opacity:0;transform:translateX(12px);transition:var(--tr);
+}
+.pc:hover .pqa{opacity:1;transform:translateX(0)}
+.qa{width:34px;height:34px;background:#fff;border:none;cursor:pointer;border-radius:50%;font-size:.85rem;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.12);transition:var(--tr)}
+.qa:hover{background:var(--gold);transform:scale(1.1)}
+
+.pinfo{padding:.9rem 1rem 1.1rem}
+.pcat{font-size:.62rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.pname{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:600;color:var(--dark);line-height:1.3;margin-bottom:.45rem}
+.ppr{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;flex-wrap:wrap}
+.pp{font-size:.95rem;font-weight:800;color:var(--dark)}
+.po{font-size:.78rem;color:var(--muted);text-decoration:line-through}
+.pd{font-size:.62rem;font-weight:800;background:rgba(155,28,28,.1);color:var(--red);padding:2px 6px;border-radius:3px}
+
+.psw{display:flex;gap:5px;margin-bottom:.65rem}
+.sw{width:15px;height:15px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:var(--tr)}
+.sw:hover,.sw.on{border-color:var(--dark);transform:scale(1.15)}
+
+.atc{
+  width:100%;background:var(--dark);color:var(--gold);
+  padding:10px;font-size:.72rem;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+  border-radius:6px;transition:var(--tr);position:relative;overflow:hidden;
+}
+.atc::after{
+  content:'✓ Added!';
+  position:absolute;inset:0;background:var(--gold);color:var(--dark);
+  display:flex;align-items:center;justify-content:center;font-weight:900;
+  opacity:0;transform:translateY(100%);transition:var(--tr);
+}
+.atc.added::after{opacity:1;transform:translateY(0)}
+.atc:hover:not(.added){background:var(--gold);color:var(--dark)}
+
+/* ═══════════════════════════════
+   PROMO BANNER
+═══════════════════════════════ */
+.promo{
+  position:relative;overflow:hidden;
+  padding:60px 5%;margin:0;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  background:var(--dark);
+}
+.promo-bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(-45deg,#0E0B06,#1C1208,#2A1A08,#0E0B06);
+  background-size:300% 300%;animation:bgsh 8s ease infinite;
+}
+.promo-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(212,168,67,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,67,.04) 1px,transparent 1px);background-size:40px 40px}
+.promo-l{position:relative;z-index:5;max-width:480px}
+.promo-tag{font-size:.65rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.5rem}
+.promo-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.6rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:.8rem}
+.promo-title em{color:var(--gold);font-style:italic}
+.promo-p{color:rgba(255,255,255,.4);font-size:.85rem;line-height:1.7;margin-bottom:1.4rem;max-width:380px}
+.promo-r{position:relative;z-index:5;display:flex;gap:.8rem;flex-wrap:wrap}
+.pstat{text-align:center;padding:1.2rem 1.5rem;background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2);border-radius:10px;min-width:90px;transition:var(--tr)}
+.pstat:hover{background:rgba(212,168,67,.15);border-color:var(--gold)}
+.pstat-n{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--gold);font-weight:900;display:block}
+.pstat-l{font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
+/* ═══════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════ */
+.testis{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tcard{
+  background:rgba(255,255,255,.04);border:1px solid rgba(212,168,67,.15);
+  border-radius:12px;padding:1.8rem;position:relative;overflow:hidden;transition:var(--tr);
+}
+.tcard::before{content:'"';font-family:'Playfair Display',serif;font-size:5.5rem;line-height:1;color:rgba(212,168,67,.07);position:absolute;top:-4px;left:14px}
+.tcard:hover{border-color:rgba(212,168,67,.4);background:rgba(255,255,255,.07);transform:translateY(-5px)}
+.t-stars{color:var(--gold);margin-bottom:.7rem;font-size:.85rem}
+.t-txt{color:rgba(255,255,255,.5);line-height:1.75;font-size:.85rem;font-style:italic;margin-bottom:1.2rem}
+.t-name{font-weight:700;color:var(--cream);font-size:.82rem}
+.t-loc{font-size:.68rem;color:var(--muted);letter-spacing:1px}
+
+/* ═══════════════════════════════
+   NEWSLETTER
+═══════════════════════════════ */
+.nl{
+  background:linear-gradient(135deg,var(--gold) 0%,#a07828 100%);
+  padding:70px 5%;text-align:center;
+}
+.nl h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;color:var(--dark);margin-bottom:.5rem}
+.nl p{color:rgba(14,11,6,.55);margin-bottom:1.8rem;font-size:.9rem}
+.nl-form{display:flex;max-width:480px;margin:0 auto;border-radius:8px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.nl-in{flex:1;padding:15px 18px;border:none;background:rgba(14,11,6,.12);color:var(--dark);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none}
+.nl-in::placeholder{color:rgba(14,11,6,.4)}
+.nl-btn{padding:15px 24px;background:var(--dark);color:var(--gold);font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;transition:background .3s}
+.nl-btn:hover{background:var(--dark2)}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer{background:var(--dark);padding:60px 5% 28px;border-top:1px solid rgba(212,168,67,.08)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:2.5rem;margin-bottom:2.5rem}
+.fb .logo{color:var(--gold);display:block;margin-bottom:.9rem}
+.fb p{color:var(--muted);font-size:.82rem;line-height:1.75;margin-bottom:1.2rem}
+.f-soc{display:flex;gap:.6rem}
+.fsb{width:36px;height:36px;border:1px solid rgba(212,168,67,.22);background:none;color:var(--muted);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:var(--tr)}
+.fsb:hover{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.fc h4{color:var(--cream);font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:1rem}
+.fc ul{list-style:none}
+.fc li{margin-bottom:.55rem}
+.fc a{color:var(--muted);font-size:.82rem;transition:color .3s}
+.fc a:hover{color:var(--gold)}
+.fpay{background:rgba(255,255,255,.04);border:1px solid rgba(212,168,67,.1);border-radius:8px;padding:.9rem 1rem;margin-top:1rem}
+.fpay p{font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.pms{display:flex;flex-wrap:wrap;gap:.4rem}
+.pm{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:4px 9px;font-size:.65rem;font-weight:600;color:rgba(255,255,255,.45)}
+.fb-bot{border-top:1px solid rgba(212,168,67,.07);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;font-size:.74rem;color:var(--muted);flex-wrap:wrap;gap:.5rem}
+
+/* ═══════════════════════════════
+   CART DRAWER
+═══════════════════════════════ */
+.c-ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9990;opacity:0;pointer-events:none;transition:opacity .3s}
+.c-ov.on{opacity:1;pointer-events:all}
+.c-drw{
+  position:fixed;right:0;top:0;bottom:0;width:390px;
+  background:var(--cream);z-index:9995;
+  transform:translateX(110%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;box-shadow:-6px 0 35px rgba(0,0,0,.2);
+}
+.c-drw.on{transform:translateX(0)}
+.c-head{background:var(--dark);padding:1.3rem 1.4rem;display:flex;align-items:center;justify-content:space-between}
+.c-head h3{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.15rem}
+.c-cls{background:none;color:var(--muted);font-size:1.2rem;transition:color .25s}
+.c-cls:hover{color:var(--gold)}
+.c-body{flex:1;overflow-y:auto;padding:1.1rem}
+.ci{display:flex;gap:.9rem;padding:.9rem 0;border-bottom:1px solid rgba(212,168,67,.1);animation:fadeUp .3s ease}
+.ci-img{width:65px;height:78px;border-radius:6px;background:var(--warm);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.9rem}
+.ci-n{font-family:'Playfair Display',serif;font-size:.88rem;color:var(--dark);margin-bottom:3px;line-height:1.3}
+.ci-p{font-size:.85rem;font-weight:800;color:var(--gold)}
+.ci-q{display:flex;align-items:center;gap:.45rem;margin-top:.45rem}
+.cq{width:26px;height:26px;border:1px solid rgba(140,122,94,.3);background:none;font-size:.95rem;color:var(--dark);display:flex;align-items:center;justify-content:center;border-radius:4px;transition:var(--tr)}
+.cq:hover{background:var(--dark);color:var(--gold);border-color:var(--dark)}
+.cqn{font-size:.82rem;font-weight:800;min-width:22px;text-align:center}
+.ci-rm{background:none;color:#ccc;font-size:.82rem;transition:color .2s;align-self:flex-start;padding:3px;margin-left:auto}
+.ci-rm:hover{color:var(--red)}
+.c-foot{padding:1.2rem 1.4rem;border-top:1px solid rgba(212,168,67,.15);background:#fff;display:none}
+.c-tot{display:flex;justify-content:space-between;align-items:center;font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--dark);margin-bottom:.9rem}
+.c-tot-a{color:var(--gold);font-weight:900}
+.c-co{width:100%;background:var(--dark);color:var(--gold);padding:14px;font-size:.78rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;border-radius:6px;transition:var(--tr)}
+.c-co:hover{background:var(--gold);color:var(--dark)}
+.c-emp{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.c-emp-i{font-size:3rem;margin-bottom:.8rem;opacity:.3}
+
+/* ═══════════════════════════════
+   TOAST
+═══════════════════════════════ */
+#toast{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--dark);color:var(--gold);
+  padding:12px 24px;border-radius:6px;
+  font-size:.82rem;font-weight:700;
+  z-index:99999;border:1px solid rgba(212,168,67,.3);
+  box-shadow:0 8px 28px rgba(0,0,0,.3);
+  transition:transform .45s cubic-bezier(.175,.885,.32,1.275);
+  white-space:nowrap;
+}
+#toast.on{transform:translateX(-50%) translateY(0)}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media(max-width:900px){
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .testis{grid-template-columns:1fr 1fr}
+  .fg{grid-template-columns:1fr 1fr}
+  .features{grid-template-columns:1fr 1fr}
+  .feat:nth-child(2){border-right:none}
+  .feat:nth-child(3){border-bottom:none}
+}
+
+@media(max-width:600px){
+  /* nav */
+  .nav-links{display:none}
+  nav{padding:0 4%}
+
+  /* hero */
+  .hero{padding:32px 4% 28px;min-height:calc(100svh - 62px)}
+  .hero-p{font-size:.85rem}
+  .hero-btns{gap:.6rem}
+  .btn-g,.btn-o{padding:11px 22px;font-size:.75rem;letter-spacing:1.5px}
+  .pill{padding:7px 11px;font-size:.68rem}
+
+  /* features */
+  .features{grid-template-columns:1fr 1fr;padding:0}
+  .feat{padding:.9rem 1rem;border-bottom:1px solid rgba(212,168,67,.06)}
+  .feat:nth-child(2){border-right:none}
+  .feat-ico{font-size:1.3rem}
+  .feat-t{font-size:.65rem}
+  .feat-d{font-size:.6rem}
+
+  /* sections */
+  .section{padding:44px 4%}
+  .sh-title{font-size:1.55rem}
+
+  /* categories - 2 cols, nice dark cards */
+  .cats{grid-template-columns:1fr 1fr;gap:10px}
+  .cat{aspect-ratio:unset;min-height:155px;padding:1rem;align-items:flex-start;justify-content:flex-end;border-radius:14px}
+  .cat:nth-child(1) .cat-gbg{background:linear-gradient(145deg,#0d3b2a,#051a12) !important}
+  .cat:nth-child(2) .cat-gbg{background:linear-gradient(145deg,#1e1256,#0a0630) !important}
+  .cat:nth-child(3) .cat-gbg{background:linear-gradient(145deg,#4a1030,#1a0412) !important}
+  .cat:nth-child(4) .cat-gbg{background:linear-gradient(145deg,#1a3a5c,#081524) !important}
+  .cat-emo{top:18px;right:14px;left:unset;transform:none !important;font-size:2.6rem;opacity:.9}
+  .cat:hover .cat-emo{transform:scale(1.1) !important}
+  .cat-body{text-align:left}
+  .cat-name{font-size:.95rem}
+  .cat-sub{font-size:.6rem}
+  .cat-btn{opacity:1 !important;transform:translateY(0) !important;font-size:.6rem;padding:5px 12px;margin-top:.45rem}
+
+  /* showcase */
+  .showcase{min-height:300px;padding:44px 4%}
+  .sc-title{font-size:1.7rem}
+  .sc-stats{gap:.6rem}
+  .sc-stat{padding:.7rem 1rem;min-width:80px}
+  .sc-stat-n{font-size:1.4rem}
+
+  /* products */
+  .pgrid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .pi{height:190px}
+  .pi-em{font-size:3.8rem}
+  .pname{font-size:.88rem}
+  .pinfo{padding:.75rem .8rem .9rem}
+  .atc{font-size:.68rem;padding:9px}
+
+  /* promo */
+  .promo{padding:44px 4%}
+  .promo-r{gap:.6rem}
+  .pstat{padding:.9rem 1rem;min-width:80px}
+  .pstat-n{font-size:1.5rem}
+
+  /* testis */
+  .testis{grid-template-columns:1fr}
+  .tcard{padding:1.4rem}
+
+  /* newsletter */
+  .nl{padding:50px 4%}
+  .nl-form{flex-direction:column;border-radius:10px}
+  .nl-in{border-radius:10px 10px 0 0;padding:13px 16px}
+  .nl-btn{border-radius:0 0 10px 10px;padding:13px}
+
+  /* footer */
+  .fg{grid-template-columns:1fr;gap:1.5rem}
+
+  /* cart */
+  .c-drw{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">KAPRAA<sup>®</sup></div>
+  <ul class="nav-links">
+    <li><a href="#school">School</a></li>
+    <li><a href="#kids">Kids</a></li>
+    <li><a href="#ladies">Ladies</a></li>
+    <li><a href="#shirts">Shirts</a></li>
+    <li><a href="#pants">Pants</a></li>
+    <li><a href="#nicked">Nicked</a></li>
+  </ul>
+  <div class="nav-icons">
+    <button class="ni" onclick="A.toast('🔍 Search jald aa rha hai!')">🔍</button>
+    <button class="ni" onclick="A.toast('🤍 Wishlist jald!')">🤍</button>
+    <button class="ni" onclick="A.openCart()">🛒<span class="dot" id="badge">0</span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-sweep"></div>
+  <!-- orbs -->
+  <div class="orb" style="width:300px;height:300px;background:#D4A843;top:-80px;left:-60px;--d:6s;--delay:0s;--tx:30px;--ty:40px"></div>
+  <div class="orb" style="width:250px;height:250px;background:#9B1C1C;bottom:-60px;right:-40px;--d:7s;--delay:-2s;--tx:-25px;--ty:-30px"></div>
+  <div class="orb" style="width:180px;height:180px;background:#0F766E;top:40%;left:10%;--d:8s;--delay:-4s;--tx:20px;--ty:-20px"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i></i> New Season 2025 <i></i></div>
+    <h1 class="hero-h1">Pakistan Ka<em>Best Fashion</em></h1>
+    <p class="hero-p">School uniforms se luxury lawn suits tak — sab kuch ek hi store mein. Premium fabric, asli quality, ghar pe delivery.</p>
+    <div class="hero-btns">
+      <button class="btn-g" onclick="A.go('cats')">Collections Dekho</button>
+      <button class="btn-o" onclick="A.openCart()">Cart Kholo</button>
+    </div>
+    <div class="hero-pills">
+      <div class="pill" onclick="A.go('school')"><span>🎒</span>School</div>
+      <div class="pill" onclick="A.go('kids')"><span>🌈</span>Kids</div>
+      <div class="pill" onclick="A.go('ladies')"><span>👗</span>Ladies</div>
+      <div class="pill" onclick="A.go('shirts')"><span>👔</span>Shirts</div>
+      <div class="pill" onclick="A.go('pants')"><span>👖</span>Pants</div>
+      <div class="pill" onclick="A.go('nicked')"><span>👕</span>Nicked</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-t">FREE DELIVERY RS 2000+ &nbsp;✦&nbsp; SCHOOL UNIFORMS IN STOCK &nbsp;✦&nbsp; EID COLLECTION LIVE &nbsp;✦&nbsp; CASH ON DELIVERY &nbsp;✦&nbsp; STITCHING AVAILABLE &nbsp;✦&nbsp; EASY RETURNS &nbsp;✦&nbsp; 5000+ HAPPY CUSTOMERS &nbsp;✦&nbsp; FREE DELIVERY RS 2000+ &nbsp;✦&nbsp; SCHOOL UNIFORMS IN STOCK &nbsp;✦&nbsp; EID COLLECTION LIVE &nbsp;✦&nbsp; CASH ON DELIVERY &nbsp;✦&nbsp; STITCHING AVAILABLE &nbsp;✦&nbsp; EASY RETURNS &nbsp;✦&nbsp; 5000+ HAPPY CUSTOMERS &nbsp;✦&nbsp;</div>
+</div>
+
+<!-- FEATURES -->
+<div class="features rev">
+  <div class="feat"><div class="feat-ico">🚚</div><div><div class="feat-t">Free Delivery</div><div class="feat-d">Rs.2000+ par free</div></div></div>
+  <div class="feat"><div class="feat-ico">🔄</div><div><div class="feat-t">Easy Returns</div><div class="feat-d">7 din mein return</div></div></div>
+  <div class="feat"><div class="feat-ico">✂️</div><div><div class="feat-t">Stitching</div><div class="feat-d">Professional available</div></div></div>
+  <div class="feat"><div class="feat-ico">💳</div><div><div class="feat-t">Easy Payment</div><div class="feat-d">COD · Easypaisa</div></div></div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section warm" id="cats">
+  <div class="sh-row sh rev">
+    <div>
+      <span class="sh-tag">Browse All</span>
+      <h2 class="sh-title">Hamare <em>Collections</em></h2>
+      <div class="sh-line"></div>
+    </div>
+    <a href="#" class="see-all">Sab Dekho →</a>
+  </div>
+  <div class="cats rev">
+    <div class="cat" onclick="A.go('school')">
+      <div class="cat-gbg" style="background:url('https://raw.githubusercontent.com/Izrar-Shahzad/Kapraa-initial/main/pexels-jibarofoto-3731256%20(1).jpg') center/cover no-repeat"></div>
+      <div class="cat-body">
+        <div class="cat-name">School Collection</div>
+        <div class="cat-sub">Uniforms · Bags · Accessories</div>
+        <button class="cat-btn">Explore →</button>
+      </div>
+    </div>
+    <div class="cat" onclick="A.go('kids')">
+      <div class="cat-gbg" style="background:url('https://raw.githubusercontent.com/Izrar-Shahzad/Kapraa-initial/main/pexels-vika-glitter-392079-1620760.jpg') center/cover no-repeat"></div>
+      <div class="cat-body">
+        <div class="cat-name">Kids Collection</div>
+        <div class="cat-sub">Frocks · Suits · Casual</div>
+        <button class="cat-btn">Explore →</button>
+      </div>
+    </div>
+    <div class="cat" onclick="A.go('ladies')">
+      <div class="cat-gbg" style="background:url('https://raw.githubusercontent.com/Izrar-Shahzad/Kapraa-initial/main/pexels-dzeninalukac-1376040%20(1).jpg') center/cover no-repeat"></div>
+      <div class="cat-body">
+        <div class="cat-name">Ladies Suits</div>
+        <div class="cat-sub">Lawn · Chiffon · Embroidered</div>
+        <button class="cat-btn">Explore →</button>
+      </div>
+    </div>
+    <div class="cat" onclick="A.go('shirts')">
+      <div class="cat-gbg" style="background:url('https://raw.githubusercontent.com/Izrar-Shahzad/Kapraa-initial/main/pexels-liza-summer-6347892.jpg') center/cover no-repeat"></div>
+      <div class="cat-emo">👔</div>
+      <div class="cat-body">
+        <div class="cat-name">Men's Shirts</div>
+        <div class="cat-sub">Formal · Casual · Kurta</div>
+        <button class="cat-btn">Explore →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE (animated) -->
+<div class="showcase">
+  <div class="sc-bg"></div>
+  <div class="sc-grid"></div>
+  <div class="sc-waves" id="scWaves"></div>
+  <div class="sc-content rev">
+    <span class="sc-tag">✦ 2025 Showcase</span>
+    <div class="sc-title">Eid Collection <em>Live Hai!</em></div>
+    <p class="sc-sub">Pakistan ke sab se khoobsurat kapre — ek jagah</p>
+    <div class="play-btn" onclick="A.toast('▶ Video player jald aa rha hai!')">▶</div>
+    <div class="sc-stats">
+      <div class="sc-stat"><span class="sc-stat-n">5K+</span><div class="sc-stat-l">Customers</div></div>
+      <div class="sc-stat"><span class="sc-stat-n">200+</span><div class="sc-stat-l">Designs</div></div>
+      <div class="sc-stat"><span class="sc-stat-n">4.9★</span><div class="sc-stat-l">Rating</div></div>
+      <div class="sc-stat"><span class="sc-stat-n">3 Day</span><div class="sc-stat-l">Delivery</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCHOOL -->
+<section class="section" id="school">
+  <div class="sh-row sh rev"><div><span class="sh-tag">🎒 Education Collection</span><h2 class="sh-title">School <em>Outfits</em></h2><div class="sh-line"></div></div></div>
+  <div class="ftabs rev" data-sec="school">
+    <button class="ft on" data-f="all">Sab</button>
+    <button class="ft" data-f="Uniform">Uniforms</button>
+    <button class="ft" data-f="Bag">Bags</button>
+    <button class="ft" data-f="Shoes">Shoes</button>
+  </div>
+  <div class="pgrid" id="school-g"></div>
+</section>
+
+<!-- PROMO -->
+<div class="promo rev">
+  <div class="promo-bg"></div><div class="promo-grid"></div>
+  <div class="promo-l">
+    <span class="promo-tag">✦ Special Offer</span>
+    <div class="promo-title">School Uniforms<br><em>Bulk Discount</em></div>
+    <p class="promo-p">5 se zyada uniforms order karein aur 15% extra discount paayein!</p>
+    <button class="btn-g" onclick="A.toast('📞 Bulk order ke liye WhatsApp karein!')">Bulk Order Karein</button>
+  </div>
+  <div class="promo-r">
+    <div class="pstat"><span class="pstat-n">15%</span><div class="pstat-l">Bulk Discount</div></div>
+    <div class="pstat"><span class="pstat-n">3 Day</span><div class="pstat-l">Delivery</div></div>
+    <div class="pstat"><span class="pstat-n">Free</span><div class="pstat-l">Stitching</div></div>
+  </div>
+</div>
+
+<!-- KIDS -->
+<section class="section warm" id="kids">
+  <div class="sh-row sh rev"><div><span class="sh-tag">🌈 Children's Wear</span><h2 class="sh-title">Kids <em>Collection</em></h2><div class="sh-line"></div></div></div>
+  <div class="ftabs rev" data-sec="kids">
+    <button class="ft on" data-f="all">Sab</button>
+    <button class="ft" data-f="Frock">Frocks</button>
+    <button class="ft" data-f="Suit">Kids Suits</button>
+    <button class="ft" data-f="Casual">Casual</button>
+  </div>
+  <div class="pgrid" id="kids-g"></div>
+</section>
+
+<!-- LADIES -->
+<section class="section" id="ladies">
+  <div class="sh-row sh rev"><div><span class="sh-tag">👗 Women's Fashion</span><h2 class="sh-title">Ladies <em>Suits</em></h2><div class="sh-line"></div></div></div>
+  <div class="ftabs rev" data-sec="ladies">
+    <button class="ft on" data-f="all">Sab</button>
+    <button class="ft" data-f="Lawn">Lawn</button>
+    <button class="ft" data-f="Chiffon">Chiffon</button>
+    <button class="ft" data-f="Embroidered">Embroidered</button>
+    <button class="ft" data-f="Formal">Formal</button>
+  </div>
+  <div class="pgrid" id="ladies-g"></div>
+</section>
+
+<!-- SHIRTS -->
+<section class="section warm" id="shirts">
+  <div class="sh-row sh rev"><div><span class="sh-tag">👔 Men's Wear</span><h2 class="sh-title">Men's <em>Shirts</em></h2><div class="sh-line"></div></div></div>
+  <div class="ftabs rev" data-sec="shirts">
+    <button class="ft on" data-f="all">Sab</button>
+    <button class="ft" data-f="Formal">Formal</button>
+    <button class="ft" data-f="Casual">Casual</button>
+    <button class="ft" data-f="Kurta">Kurta</button>
+    <button class="ft" data-f="Printed">Printed</button>
+  </div>
+  <div class="pgrid" id="shirts-g"></div>
+</section>
+
+<!-- PANTS -->
+<section class="section" id="pants">
+  <div class="sh-row sh rev"><div><span class="sh-tag">👖 Bottom Wear</span><h2 class="sh-title">Pants & <em>Trousers</em></h2><div class="sh-line"></div></div></div>
+  <div class="ftabs rev" data-sec="pants">
+    <button class="ft on" data-f="all">Sab</button>
+    <button class="ft" data-f="Jeans">Jeans</button>
+    <button class="ft" data-f="Trouser">Trousers</button>
+    <button class="ft" data-f="Shalwar">Shalwar</button>
+    <button class="ft" data-f="Chino">Chinos</button>
+  </div>
+  <div class="pgrid" id="pants-g"></div>
+</section>
+
+<!-- NICKED -->
+<section class="section warm" id="nicked">
+  <div class="sh-row sh rev"><div><span class="sh-tag">👕 Casual Collection</span><h2 class="sh-title">Nicked <em>Shirts</em></h2><div class="sh-line"></div></div></div>
+  <div class="ftabs rev" data-sec="nicked">
+    <button class="ft on" data-f="all">Sab</button>
+    <button class="ft" data-f="Round">Round Neck</button>
+    <button class="ft" data-f="V-Neck">V-Neck</button>
+    <button class="ft" data-f="Polo">Polo</button>
+    <button class="ft" data-f="Henley">Henley</button>
+  </div>
+  <div class="pgrid" id="nicked-g"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section dark rev">
+  <div class="sh-row sh"><div>
+    <span class="sh-tag">Reviews</span>
+    <h2 class="sh-title" style="color:var(--cream)">Customers Kya <em>Kehte Hain</em></h2>
+    <div class="sh-line"></div>
+  </div></div>
+  <div class="testis">
+    <div class="tcard rev"><div class="t-stars">★★★★★</div><p class="t-txt">School uniform liya tha — quality ekdum zabardast! Dono bachon ke liye order kiya, dono khush hain!</p><div class="t-name">Rukhsana Bibi</div><div class="t-loc">Lahore · School Parent</div></div>
+    <div class="tcard rev"><div class="t-stars">★★★★★</div><p class="t-txt">Ladies lawn suit Eid ke liye — aangan mein sab ne tarif ki. Delivery bhi 2 din mein!</p><div class="t-name">Ayesha Noor</div><div class="t-loc">Karachi · Verified Buyer</div></div>
+    <div class="tcard rev"><div class="t-stars">★★★★★</div><p class="t-txt">3 nicked polo shirts liye — color acha, stitching tight. Paise wasool hue yaar!</p><div class="t-name">Usman Tariq</div><div class="t-loc">Islamabad · Regular Customer</div></div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl">
+  <h2>Naye Designs Pehle Jaano</h2>
+  <p>Subscribe karein aur pehli order par <strong>10% discount</strong> paayein</p>
+  <div class="nl-form">
+    <input class="nl-in" id="nlEmail" type="email" placeholder="Apna email dalein...">
+    <button class="nl-btn" onclick="A.subscribe()">Subscribe →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg">
+    <div class="fb">
+      <div class="logo" style="font-size:1.5rem;margin-bottom:.8rem">KAPRAA<sup style="font-size:.4rem;color:var(--muted);vertical-align:super">®</sup></div>
+      <p>Pakistan ke sab se behtareen kapron ka online store — school se leke formal tak, har mausam ke liye.</p>
+      <div class="f-soc">
+        <button class="fsb">📘</button><button class="fsb">📸</button>
+        <button class="fsb">📱</button><button class="fsb">🐦</button>
+      </div>
+    </div>
+    <div class="fc"><h4>Collections</h4><ul>
+      <li><a href="#school">School Uniforms</a></li>
+      <li><a href="#kids">Kids Wear</a></li>
+      <li><a href="#ladies">Ladies Suits</a></li>
+      <li><a href="#shirts">Men's Shirts</a></li>
+      <li><a href="#pants">Pants</a></li>
+      <li><a href="#nicked">Nicked Shirts</a></li>
+    </ul></div>
+    <div class="fc"><h4>Help</h4><ul>
+      <li><a href="#">Order Track</a></li>
+      <li><a href="#">Size Guide</a></li>
+      <li><a href="#">Returns</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Bulk Orders</a></li>
+    </ul></div>
+    <div class="fc"><h4>Contact</h4><ul>
+      <li><a href="#">📞 0300-1234567</a></li>
+      <li><a href="#">💬 WhatsApp Us</a></li>
+      <li><a href="#">✉️ info@kapraa.pk</a></li>
+      <li><a href="#">🕐 Mon-Sat 9am-9pm</a></li>
+    </ul>
+    <div class="fpay"><p>Payment Methods</p><div class="pms">
+      <span class="pm">Cash on Delivery</span>
+      <span class="pm">Easypaisa</span>
+      <span class="pm">JazzCash</span>
+    </div></div></div>
+  </div>
+  <div class="fb-bot">
+    <span>© 2025 KAPRAA. Sab rights محفوظ.</span>
+    <span>Made with ❤️ for Pakistan</span>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="c-ov" id="cOv" onclick="A.closeCart()"></div>
+<div class="c-drw" id="cDrw">
+  <div class="c-head">
+    <h3>🛒 Meri Cart</h3>
+    <button class="c-cls" onclick="A.closeCart()">✕</button>
+  </div>
+  <div class="c-body" id="cBody"></div>
+  <div class="c-foot" id="cFoot">
+    <div class="c-tot"><span>Total:</span><span class="c-tot-a" id="cTotal">Rs. 0</span></div>
+    <button class="c-co" onclick="A.checkout()">Order Place Karein →</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ═══════════════════════════════
+//  DATA
+// ═══════════════════════════════
+const DB = {
+  school:[
+    {id:'s1',name:'Boys Blue Uniform Set',cat:'Uniform',e:'👕',p:1450,op:1800,b:'sale',c:['#1e3a8a','#1e40af','#fff']},
+    {id:'s2',name:'Girls White Shirt Skirt',cat:'Uniform',e:'👚',p:1350,op:null,b:'new',c:['#fff','#e0e7ff','#dbeafe']},
+    {id:'s3',name:'School Backpack Premium',cat:'Bag',e:'🎒',p:1850,op:2200,b:'sale',c:['#1e3a8a','#000','#7c3aed']},
+    {id:'s4',name:'Sports PT Kit',cat:'Uniform',e:'🩳',p:980,op:null,b:null,c:['#fff','#e2e8f0','#94a3b8']},
+    {id:'s5',name:'Pencil Case & Kit',cat:'Bag',e:'✏️',p:450,op:600,b:'sale',c:['#fbbf24','#f97316','#ec4899']},
+    {id:'s6',name:'Black Oxford Shoes',cat:'Shoes',e:'👞',p:2200,op:null,b:'new',c:['#000','#1c1917','#44403c']},
+    {id:'s7',name:'Girls Dupatta Uniform',cat:'Uniform',e:'🧕',p:1200,op:1500,b:'sale',c:['#1e3a8a','#93c5fd','#fff']},
+    {id:'s8',name:'Sports Shoes White',cat:'Shoes',e:'👟',p:1900,op:null,b:null,c:['#fff','#e2e8f0','#3b82f6']},
+  ],
+  kids:[
+    {id:'k1',name:'Angarkha Frock Embroidered',cat:'Frock',e:'🌸',p:1650,op:2000,b:'sale',c:['#ec4899','#f97316','#fbbf24']},
+    {id:'k2',name:'Boy Kurta Shalwar Eid',cat:'Suit',e:'🎩',p:1400,op:null,b:'new',c:['#6d28d9','#7c3aed','#fff']},
+    {id:'k3',name:'Rainbow Cotton Frock',cat:'Frock',e:'🌈',p:890,op:1100,b:'sale',c:['#ef4444','#f97316','#eab308']},
+    {id:'k4',name:'Casual Jeans T-Shirt Set',cat:'Casual',e:'👦',p:1100,op:null,b:null,c:['#1d4ed8','#fff','#6b7280']},
+    {id:'k5',name:'Princess Fairy Dress',cat:'Frock',e:'🧚',p:1800,op:2200,b:'hot',c:['#f9a8d4','#fbcfe8','#fff']},
+    {id:'k6',name:'Linen Summer Suit',cat:'Suit',e:'🌞',p:1250,op:null,b:'new',c:['#fef3c7','#fde68a','#fbbf24']},
+    {id:'k7',name:'Velvet Winter Suit',cat:'Suit',e:'❄️',p:1950,op:2400,b:'sale',c:['#1e1b4b','#312e81','#4338ca']},
+    {id:'k8',name:'Play Time Tee Set',cat:'Casual',e:'🎮',p:750,op:null,b:null,c:['#10b981','#34d399','#6ee7b7']},
+  ],
+  ladies:[
+    {id:'l1',name:'Gulbahar 3-Piece Lawn',cat:'Lawn',e:'🌺',p:2850,op:3500,b:'sale',c:['#db2777','#ec4899','#f9a8d4']},
+    {id:'l2',name:'Luxury Embroidered Suit',cat:'Embroidered',e:'✨',p:6500,op:null,b:'new',c:['#b45309','#d97706','#fbbf24']},
+    {id:'l3',name:'Chiffon Party Wear',cat:'Chiffon',e:'🎀',p:4200,op:5000,b:'sale',c:['#7c3aed','#8b5cf6','#c4b5fd']},
+    {id:'l4',name:'Khaddar Winter Suit',cat:'Formal',e:'🧣',p:3100,op:null,b:null,c:['#78350f','#92400e','#b45309']},
+    {id:'l5',name:'Digital Print Lawn',cat:'Lawn',e:'🌸',p:2400,op:3000,b:'sale',c:['#0891b2','#06b6d4','#67e8f9']},
+    {id:'l6',name:'Silk Formal Suit',cat:'Formal',e:'👑',p:8500,op:null,b:'new',c:['#1c1917','#292524','#78716c']},
+    {id:'l7',name:'Pastel Chiffon 2-Piece',cat:'Chiffon',e:'🌙',p:3800,op:4500,b:'hot',c:['#fce7f3','#fbcfe8','#f9a8d4']},
+    {id:'l8',name:'Cotton Casual Suit',cat:'Lawn',e:'🌿',p:1900,op:null,b:null,c:['#166534','#15803d','#86efac']},
+  ],
+  shirts:[
+    {id:'sh1',name:'Oxford Formal Shirt',cat:'Formal',e:'👔',p:1800,op:2200,b:'sale',c:['#fff','#e2e8f0','#93c5fd']},
+    {id:'sh2',name:'Linen Casual Shirt',cat:'Casual',e:'🌿',p:1400,op:null,b:'new',c:['#fef3c7','#d1fae5','#e0e7ff']},
+    {id:'sh3',name:'Classic Kurta White',cat:'Kurta',e:'🕌',p:1600,op:2000,b:'sale',c:['#fff','#f8fafc','#e2e8f0']},
+    {id:'sh4',name:'Printed Beach Shirt',cat:'Printed',e:'🌴',p:1100,op:null,b:null,c:['#fbbf24','#f97316','#10b981']},
+    {id:'sh5',name:'Royal Blue Formal',cat:'Formal',e:'💙',p:2000,op:2500,b:'hot',c:['#1d4ed8','#2563eb','#3b82f6']},
+    {id:'sh6',name:'Embroidered Eid Kurta',cat:'Kurta',e:'🌟',p:2800,op:null,b:'new',c:['#6d28d9','#7c3aed','#a78bfa']},
+    {id:'sh7',name:'Striped Casual Shirt',cat:'Casual',e:'👕',p:1200,op:1600,b:'sale',c:['#1e3a8a','#fff','#dc2626']},
+    {id:'sh8',name:'Floral Print Summer',cat:'Printed',e:'🌻',p:1350,op:null,b:null,c:['#b45309','#d97706','#fbbf24']},
+  ],
+  pants:[
+    {id:'p1',name:'Slim Fit Black Jeans',cat:'Jeans',e:'👖',p:2200,op:2800,b:'sale',c:['#000','#1c1917','#292524']},
+    {id:'p2',name:'Classic Dress Trouser',cat:'Trouser',e:'🧳',p:1800,op:null,b:'new',c:['#1e293b','#334155','#475569']},
+    {id:'p3',name:'Khaddar Shalwar',cat:'Shalwar',e:'🕌',p:950,op:1200,b:'sale',c:['#fff','#f1f5f9','#e2e8f0']},
+    {id:'p4',name:'Khaki Chino Pants',cat:'Chino',e:'🌰',p:1600,op:null,b:null,c:['#92400e','#a16207','#ca8a04']},
+    {id:'p5',name:'Relaxed Fit Blue Jeans',cat:'Jeans',e:'💙',p:1900,op:2300,b:'hot',c:['#1d4ed8','#2563eb','#93c5fd']},
+    {id:'p6',name:'Linen Summer Trouser',cat:'Trouser',e:'☀️',p:1400,op:null,b:'new',c:['#fef3c7','#d1fae5','#e0e7ff']},
+    {id:'p7',name:'Pajama Shalwar Cotton',cat:'Shalwar',e:'🌙',p:750,op:900,b:'sale',c:['#fff','#fce7f3','#e0e7ff']},
+    {id:'p8',name:'Grey Slim Chino',cat:'Chino',e:'🩶',p:1700,op:null,b:null,c:['#6b7280','#9ca3af','#d1d5db']},
+  ],
+  nicked:[
+    {id:'n1',name:'Classic White Round Neck',cat:'Round',e:'⚪',p:650,op:800,b:'sale',c:['#fff','#f1f5f9','#e2e8f0']},
+    {id:'n2',name:'Black V-Neck Premium',cat:'V-Neck',e:'⚫',p:750,op:null,b:'new',c:['#000','#1c1917','#292524']},
+    {id:'n3',name:'Royal Polo Shirt',cat:'Polo',e:'🏇',p:1100,op:1400,b:'sale',c:['#1d4ed8','#fff','#dc2626']},
+    {id:'n4',name:'Henley Button Neck',cat:'Henley',e:'🟤',p:900,op:null,b:null,c:['#92400e','#a16207','#fff']},
+    {id:'n5',name:'Striped Polo Club',cat:'Polo',e:'⛳',p:1200,op:1500,b:'hot',c:['#166534','#fff','#1e3a8a']},
+    {id:'n6',name:'Colorblock V-Neck',cat:'V-Neck',e:'🌈',p:850,op:null,b:'new',c:['#dc2626','#2563eb','#fff']},
+    {id:'n7',name:'Plain Grey Tee',cat:'Round',e:'🩶',p:550,op:700,b:'sale',c:['#6b7280','#9ca3af','#d1d5db']},
+    {id:'n8',name:'Graphic Print Round Neck',cat:'Round',e:'🎨',p:780,op:null,b:null,c:['#7c3aed','#fbbf24','#000']},
+  ]
+};
+
+// ═══════════════════════════════
+//  CART
+// ═══════════════════════════════
+const Cart = {
+  items:[],
+  add(p){
+    const ex=this.items.find(i=>i.id===p.id);
+    ex ? ex.qty++ : this.items.push({...p,qty:1});
+    this._emit();
+  },
+  remove(id){this.items=this.items.filter(i=>i.id!==id);this._emit()},
+  qty(id,d){
+    const i=this.items.find(x=>x.id===id);
+    if(!i)return;
+    i.qty+=d;
+    if(i.qty<=0)this.remove(id);
+    else this._emit();
+  },
+  get total(){return this.items.reduce((s,i)=>s+i.p*i.qty,0)},
+  get count(){return this.items.reduce((s,i)=>s+i.qty,0)},
+  clear(){this.items=[];this._emit()},
+  _emit(){document.dispatchEvent(new Event('cart'))}
+};
+
+// ═══════════════════════════════
+//  RENDER
+// ═══════════════════════════════
+function card(p){
+  const bmap={sale:'b-sale',new:'b-new',hot:'b-hot'};
+  const btxt={sale:'SALE 🔥',new:'NEW ✨',hot:'HOT 💫'};
+  const sw=p.c.map((c,i)=>`<span class="sw${i===0?' on':''}" style="background:${c}" onclick="this.closest('.psw').querySelectorAll('.sw').forEach(s=>s.classList.remove('on'));this.classList.add('on')"></span>`).join('');
+  const disc=p.op?Math.round((1-p.p/p.op)*100):0;
+  const g1=p.c[0]||'#c9a86c', g2=p.c[1]||'#e8d4a0';
+  return `<div class="pc rev">
+    <div class="pi">
+      <div class="pi-bg" style="background:linear-gradient(150deg,${g1}22,${g2}44,#f4edd8)"></div>
+      ${p.b?`<span class="pbadge ${bmap[p.b]}">${btxt[p.b]}</span>`:''}
+      <div class="pi-em">${p.e}</div>
+      <div class="pqa">
+        <button class="qa" onclick="A.toast('🤍 Wishlist mein add!')">🤍</button>
+        <button class="qa" onclick="A.toast('👁 Quick view jald!')">👁</button>
+      </div>
+    </div>
+    <div class="pinfo">
+      <div class="pcat">${p.cat}</div>
+      <div class="pname">${p.name}</div>
+      <div class="ppr">
+        <span class="pp">Rs. ${p.p.toLocaleString()}</span>
+        ${p.op?`<span class="po">Rs. ${p.op.toLocaleString()}</span><span class="pd">-${disc}%</span>`:''}
+      </div>
+      <div class="psw">${sw}</div>
+      <button class="atc" id="ab-${p.id}" onclick="A.add('${p.id}',this)">Cart Mein Daalo +</button>
+    </div>
+  </div>`;
+}
+
+function renderGrid(sec,filter='all'){
+  const data=filter==='all'?DB[sec]:DB[sec].filter(p=>p.cat===filter);
+  const el=document.getElementById(`${sec}-g`);
+  if(el){el.innerHTML=data.map(card).join('');observe();}
+}
+
+// ═══════════════════════════════
+//  APP CONTROLLER
+// ═══════════════════════════════
+const A = {
+  init(){
+    this._waves();
+    this._nav();
+    this._filters();
+    this._cartEvt();
+    Object.keys(DB).forEach(s=>renderGrid(s));
+    observe();
+    this._badge();
+  },
+
+  _waves(){
+    const c=document.getElementById('scWaves');
+    if(!c)return;
+    ['#D4A843','#9B1C1C','#0F766E','#1E40AF','#7C3AED','#B45309','#D4A843','#1E40AF'].forEach((col,i)=>{
+      const d=document.createElement('div');
+      d.className='wave';
+      d.style.cssText=`background:${col};--ws:${3+i*.5}s;--wd:${-i*.35}s;--wa:${-12+i*3}deg;--wb:${-4+i*3}deg;margin-left:${i?-25:0}px`;
+      c.appendChild(d);
+    });
+  },
+
+  _nav(){
+    window.addEventListener('scroll',()=>{
+      document.querySelector('nav').style.height=window.scrollY>50?'56px':'62px';
+    },{passive:true});
+  },
+
+  _filters(){
+    document.querySelectorAll('.ftabs').forEach(tabs=>{
+      const sec=tabs.dataset.sec;
+      tabs.querySelectorAll('.ft').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          tabs.querySelectorAll('.ft').forEach(b=>b.classList.remove('on'));
+          btn.classList.add('on');
+          renderGrid(sec,btn.dataset.f);
+        });
+      });
+    });
+  },
+
+  _cartEvt(){
+    document.addEventListener('cart',()=>{this._badge();this._drawCart();});
+  },
+
+  _badge(){
+    document.getElementById('badge').textContent=Cart.count;
+  },
+
+  _drawCart(){
+    const body=document.getElementById('cBody');
+    const foot=document.getElementById('cFoot');
+    if(!Cart.items.length){
+      body.innerHTML=`<div class="c-emp"><div class="c-emp-i">🛒</div><p style="font-family:'Playfair Display',serif">Cart khali hai</p><small style="color:var(--muted)">Kuch add karein!</small></div>`;
+      foot.style.display='none';
+      return;
+    }
+    body.innerHTML=Cart.items.map(i=>`
+      <div class="ci">
+        <div class="ci-img">${i.e}</div>
+        <div style="flex:1">
+          <div class="ci-n">${i.name}</div>
+          <div class="ci-p">Rs. ${(i.p*i.qty).toLocaleString()}</div>
+          <div class="ci-q">
+            <button class="cq" onclick="Cart.qty('${i.id}',-1)">−</button>
+            <span class="cqn">${i.qty}</span>
+            <button class="cq" onclick="Cart.qty('${i.id}',1)">+</button>
+          </div>
+        </div>
+        <button class="ci-rm" onclick="Cart.remove('${i.id}')">✕</button>
+      </div>`).join('');
+    document.getElementById('cTotal').textContent=`Rs. ${Cart.total.toLocaleString()}`;
+    foot.style.display='block';
+  },
+
+  add(id,btn){
+    const all=Object.values(DB).flat();
+    const p=all.find(x=>x.id===id);
+    if(!p)return;
+    Cart.add(p);
+    btn.classList.add('added');
+    setTimeout(()=>btn.classList.remove('added'),1800);
+    this.toast(`✓ "${p.name}" cart mein!`);
+  },
+
+  openCart(){
+    document.getElementById('cOv').classList.add('on');
+    document.getElementById('cDrw').classList.add('on');
+    this._drawCart();
+    document.body.style.overflow='hidden';
+  },
+
+  closeCart(){
+    document.getElementById('cOv').classList.remove('on');
+    document.getElementById('cDrw').classList.remove('on');
+    document.body.style.overflow='';
+  },
+
+  checkout(){
+    const t=Cart.total;
+    if(!t)return;
+    this.closeCart();
+    Cart.clear();
+    this.toast(`🎉 Order place ho gaya! Total: Rs. ${t.toLocaleString()}`);
+  },
+
+  subscribe(){
+    const v=document.getElementById('nlEmail').value;
+    if(!v||!v.includes('@')){this.toast('⚠️ Sahih email dalein!');return;}
+    document.getElementById('nlEmail').value='';
+    this.toast('🎉 10% discount code email pe bhej diya!');
+  },
+
+  go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})},
+
+  _tid:null,
+  toast(msg){
+    const t=document.getElementById('toast');
+    t.textContent=msg;t.classList.add('on');
+    clearTimeout(this._tid);
+    this._tid=setTimeout(()=>t.classList.remove('on'),3000);
+  }
+};
+
+// ═══════════════════════════════
+//  SCROLL REVEAL
+// ═══════════════════════════════
+function observe(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')});
+  },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rev:not(.on)').forEach(el=>io.observe(el));
+}
+
+// BOOT
+document.addEventListener('DOMContentLoaded',()=>A.init());
+</script>
+</body>
+</html>
